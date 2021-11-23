@@ -23,7 +23,7 @@ const Header = () => {
           <Link to="/contexts" className={styles.menuItem}>Contexts</Link>
         </li>
         <li>
-          <Link to="/spotify" className={styles.menuItem}>Spotify</Link>
+          <Link to="/spotify" className={styles.menuItem}>tout doux liste</Link>
         </li>
       </ul>
     </div>
