@@ -10,8 +10,7 @@ const spotifyRedirectUri = process.env.REACT_APP_SPOTIFY_REDIRECT_URI
 const Spotify = () => {
   return (
     <div>
-      <h1>Spotify</h1>
-
+      <h1>Bucket list</h1>
       <SpotifyProvider
         clientId={spotifyClientId}
         redirectUri={spotifyRedirectUri}
