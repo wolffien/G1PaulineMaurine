@@ -7,19 +7,16 @@
   }
   
   body {
-    background: linear-gradient(
-      90deg,
-      rgba(48, 16, 255, 1) 0%,
-      rgba(100, 115, 255, 1) 100%
-    );
+    background-color: #a44a3f;
   }
+
   .todo-app {
     display: flex;
     flex-direction: column;
     justify-content: start;
     width: 520px;
     min-height: 600px;
-    background: #161a2b;
+    background: #fffef1;
     text-align: center;
     margin: 128px auto;
     border-radius: 10px;
@@ -28,7 +25,7 @@
   
   h1 {
     margin: 32px 0;
-    color: #fff;
+    color: #a44a3f;
     font-size: 24px;
   }
   
@@ -44,15 +41,14 @@
   .todo-input {
     padding: 14px 32px 14px 16px;
     border-radius: 4px 0 0 4px;
-    border: 2px solid #5d0cff;
+    border: 2px solid #a44a3f;
     outline: none;
     width: 320px;
     background: transparent;
-    color: #fff;
   }
   
   .todo-input::placeholder {
-    color: #e2e2e2;
+    color: lightgrey;
   }
   
   .todo-button {
@@ -61,25 +57,17 @@
     border-radius: 0 4px 4px 0;
     cursor: pointer;
     outline: none;
-    background: linear-gradient(
-      90deg,
-      rgba(93, 12, 255, 1) 0%,
-      rgba(155, 0, 250, 1) 100%
-    );
-    color: #fff;
+    color: #fffef1;
+    background-color: #a44a3f;
     text-transform: capitalize;
   }
   
   .todo-input.edit {
-    border: 2px solid #149fff;
+    border: 2px solid #b7d1a5;
   }
   
   .todo-button.edit {
-    background: linear-gradient(
-      90deg,
-      rgba(20, 159, 255, 1) 0%,
-      rgba(17, 122, 255, 1) 100%
-    );
+    background-color: #b7d1a5;
     padding: 16px 22px;
   }
   
@@ -95,39 +83,22 @@
     align-items: center;
     margin: 4px auto;
     color: #fff;
-    background: linear-gradient(
-      90deg,
-      rgba(255, 118, 20, 1) 0%,
-      rgba(255, 84, 17, 1) 100%
-    );
-  
+    background-color: #a44a3f;
     padding: 16px;
     border-radius: 5px;
     width: 90%;
   }
   
   .todo-row:nth-child(4n + 1) {
-    background: linear-gradient(
-      90deg,
-      rgba(93, 12, 255, 1) 0%,
-      rgba(155, 0, 250, 1) 100%
-    );
+    background-color: #f19c79;
   }
   
   .todo-row:nth-child(4n + 2) {
-    background: linear-gradient(
-      90deg,
-      rgba(255, 12, 241, 1) 0%,
-      rgba(250, 0, 135, 1) 100%
-    );
+    background-color: #cada7e;
   }
   
   .todo-row:nth-child(4n + 3) {
-    background: linear-gradient(
-      90deg,
-      rgba(20, 159, 255, 1) 0%,
-      rgba(17, 122, 255, 1) 100%
-    );
+    background-color: #b7d1a5;
   }
   
   .icons {
@@ -139,9 +110,9 @@
   
   .delete-icon {
     margin-right: 5px;
-    color: #fff;
+    color: #fffef1;
   }
   
   .edit-icon {
-    color: #fff;
+    color: #fffef1;
   }
