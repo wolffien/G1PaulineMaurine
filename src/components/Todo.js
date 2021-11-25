@@ -23,7 +23,7 @@ function Todo({ todos, completeTodo, removeTodo, updateTodo }) {
     }
 
     return todos.map((todo, index) => (
-        // fonction qui check si la todo est écrite et validée
+        // si la todo est cliquée, elle renvoie à du css qui coche la todo
         <div
             className={todo.isComplete ? 'todo-row complete' : 'todo-row'}
             key={index}

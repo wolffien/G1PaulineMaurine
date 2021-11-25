@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 
 function TodoForm(props) {
-    const [input, setInput] = useState('');
+    // quand on update ça ne perd pas ce que l'user avait écrit
+    const [input, setInput] = useState(props.edit ? props.edit.value : '');
 
     const inputRef = useRef(null)
 
@@ -28,20 +29,35 @@ function TodoForm(props) {
 
     return (
         <form className='todo-form' onSubmit={handleSubmit}>
-            {/* barre d'input pour ajouter un todo */}
-            <input
-                type='text'
-                placeholder='Add a todo'
-                value={input}
-                name='text'
-                className='todo-input'
-                onChange={handleChange}
-                ref={inputRef}
-            />
-            {/* bouton valider */}
-            <button className='todo-button'>Add todo</button>
+            {props.edit ? (
+                <>
+                    <input
+                        type='text'
+                        placeholder='Update your item'
+                        value={input}
+                        name='text'
+                        className='todo-input edit'
+                        onChange={handleChange}
+                        ref={inputRef}
+                    />
+                    <button className='todo-button edit'>Update</button>
+                </>
+            ) : (
+                <>
+                    <input
+                        type='text'
+                        placeholder='Add a todo'
+                        value={input}
+                        name='text'
+                        className='todo-input'
+                        onChange={handleChange}
+                        ref={inputRef}
+                    />
+                    <button className='todo-button'>Add todo</button>
+                </>
+            )}
         </form>
-    )
+    );
 }
 
-export default TodoForm
+export default TodoForm;
