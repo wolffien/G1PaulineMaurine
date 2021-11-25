@@ -13,7 +13,8 @@ export default function Header() {
 }
 
 
-// // créer une const qui s'occupera du style
+// style disponible dans header.css
+
 // const styles = StyleSheet.create({
 //     header: {
 //         height: 80,
