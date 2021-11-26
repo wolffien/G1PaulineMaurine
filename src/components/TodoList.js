@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import TodoForm from './TodoForm';
 import Todo from './Todo';
+import { TiTree } from 'react-icons/ti';
 
 // todolit sert à utiliser les infos qu'on récupère dans les form/input que l'on retrouve dans TodoForm
 
@@ -10,13 +11,13 @@ function TodoList() {
     // fonction qui permet de ne pas avoir de gros espaces / bugs lors de l'input
     // (ex : mau          rine deviendra mau rine)
     // ex 2 : ne peut pas entrer une série d'espaces seuls)
-    const addTodo = todo => {
-        if (!todo.text || /^\s*$/.test(todo.text)) {
-            return;
-        }
+    const addTodo = (todo) => {
+        // if (!todo.text || /^\s*$/.test(todo.text)) {
+        //     return;
+        // }
 
         // fonction qui permet d'ajouter/conserver une todo dans la data (console de inspecter) dès validation
-        const newTodos = [todo, ...todos];
+        const newTodos = [...todos, todo];
 
         setTodos(newTodos)
     };
@@ -51,11 +52,17 @@ function TodoList() {
         setTodos(updatedTodos);
     };
 
+    const values = {
+        titre:"",
+        description:""
+    }
+
+
     return (
         <div>
             <h1>Bucket List</h1>
             {/* ajouter le form quand on tape qqch dans l'input */}
-            <TodoForm onSubmit={addTodo} />
+            <TodoForm onSubmit={addTodo} value={values} />
             {/* afficher la todo une fois validé, ainsi que l'option supp et edit */}
             <Todo
                 todos={todos}

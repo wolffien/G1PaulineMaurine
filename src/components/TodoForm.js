@@ -2,24 +2,34 @@ import React, { useState, useEffect, useRef } from 'react';
 
 // todoform sert à faire les input des formulaires "modifier" et "ajouter"
 
+// props = { value, onSubmit }
 function TodoForm(props) {
+
+    // if (value)
     // quand on update ça ne perd pas ce que l'user avait écrit
-    const [input, setInput] = useState(props.edit ? props.edit.value : '');
+    const [title, setTitle] = useState(props.value.titre)
+    const [description, setDescription] = useState(props.value.titre)
 
     //fonction pour choisir où va le curseur texte (quand il y a "ajouter" et "éditer" sur la même page)
     const inputRef = useRef(null)
     // mettre automatiquement le curseur dans l'input de l'edit quand on clique sur edit
     useEffect(() => {
         inputRef.current.focus()
-    });
+    }, []);
 
-    // faire en sorte que l'on puisse entrer du texte dans l'input
-    const handleChange = e => {
-        setInput(e.target.value);
+    // faire un input titre
+    const handleTitleChange = e => {
+        setTitle(e.target.value);
+    };
+    
+
+    // faire un input description
+    const handleDescriptionChange = e => {
+        setDescription(e.target.value);
     };
 
-    // enlever le rafraichissement auto de la page
     const handleSubmit = e => {
+        // enlever le rafraichissement auto de la page
         e.preventDefault();
 
         // faire en sorte que le btn "ajouter" conserve la data
@@ -27,11 +37,14 @@ function TodoForm(props) {
         props.onSubmit({
             // mettre une id à chaque todo, qui est un nombre compris entre 1 et 10000
             id: Math.floor(Math.random() * 10000),
-            text: input
+            title: title,
+            description: description
+            // text: description
         });
 
         // remet à zéro l'input après validation
-        setInput('');
+        setTitle('');
+        setDescription('');
     };
     // ce qu'il s'affiche à l'écran (les input)
     return (
@@ -42,25 +55,34 @@ function TodoForm(props) {
                     <input
                         type='text'
                         placeholder='Update your item'
-                        value={input}
+                        value={title}
                         name='text'
                         className='todo-input edit'
-                        onChange={handleChange}
+                        onChange={handleTitleChange}
                         ref={inputRef}
                     />
                     <button className='todo-button edit'>Modifier</button>
                 </>
             ) : (
                 <>
-                    {/* champ de texte de l'input */}
+                    {/* champ de texte d'ajouter une todo */}
                     <input
                         type='text'
-                        placeholder='Ajouter une expérience'
-                        value={input}
+                        placeholder="Titre de l'expérience"
+                        value={title}
                         name='text'
                         className='todo-input'
-                        onChange={handleChange}
+                        onChange={handleTitleChange}
                         ref={inputRef}
+                    />
+                    <input
+                        type='text'
+                        placeholder="Description de l'expérience"
+                        value={description}
+                        name='text'
+                        className='todo-input'
+                        onChange={handleDescriptionChange}
+                    // ref={inputRef}
                     />
                     <button className='todo-button'>Ajouter</button>
                 </>

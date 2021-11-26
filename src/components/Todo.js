@@ -33,7 +33,10 @@ function Todo({ todos, completeTodo, removeTodo, updateTodo }) {
         >
             {/* retourner le texte de la todo */}
             <div key={todo.id} onClick={() => completeTodo(todo.id)}>
-                {todo.text}
+                {todo.title}
+                {<br></br>}
+                {<br></br>}
+                {todo.description}
             </div>
             {/* div qui retourne les icones */}
             <div className='icons'>
