@@ -27,7 +27,7 @@ function TodoList() {
         if (!newValue.text || /^\s*$/.test(newValue.text)) {
             return;
         }
-
+        
         // fonction qui permet de modifier une todo si le texte tapé est différent
         setTodos(prev => prev.map(item =>(item.id === todoId ? newValue : item))
         );
