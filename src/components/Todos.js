@@ -3,25 +3,20 @@ import TodoForm from './TodoForm';
 import { RiCloseCircleLine } from 'react-icons/ri';
 import { TiEdit } from 'react-icons/ti';
 
+
 // Todo sert à afficher les todo une fois qu'elles sont validées dans l'input
 
-function Todo({ todos, completeTodo, removeTodo, updateTodo }) {
-    const [edit, setEdit] = useState({
-        id: null,
-        value: ''
-    });
+function Todos({ todos, completeTodo, removeTodo, updateTodo }) {
+    const [editingTodo, setEditingTodo] = useState(undefined)
 
     // fonction modifier un todo
     const submitUpdate = value => {
-        updateTodo(edit.id, value);
-        setEdit({
-            id: null,
-            value: ''
-        });
-    };
+        updateTodo(editingTodo.id, value);
+        setEditingTodo(undefined)
+    }
     // si la modification est true, alors afficher la todo modifiée
-    if (edit.id) {
-        return <TodoForm edit={edit} onSubmit={submitUpdate} />;
+    if (editingTodo) {
+        return <TodoForm values={editingTodo} onSubmit={submitUpdate} />;
     }
 
     // retourner la data stockée dans le tableau des todo
@@ -47,7 +42,7 @@ function Todo({ todos, completeTodo, removeTodo, updateTodo }) {
                 />
                 <TiEdit
                     // quand on clique, cela renvoie vers la fonction "éditer la todo"
-                    onClick={() => setEdit({ id: todo.id, value: todo.text })}
+                    onClick={() => setEditingTodo(todo)}
                     className='edit-icon'
                 />
             </div>
@@ -56,4 +51,4 @@ function Todo({ todos, completeTodo, removeTodo, updateTodo }) {
     ));
 }
 
-export default Todo;
+export default Todos;

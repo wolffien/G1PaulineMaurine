@@ -1,14 +1,15 @@
 import React, { useState, useEffect, useRef } from 'react';
 
+import clsx from 'clsx'
+
 // todoform sert à faire les input des formulaires "modifier" et "ajouter"
 
 // props = { value, onSubmit }
 function TodoForm(props) {
-
     // if (value)
     // quand on update ça ne perd pas ce que l'user avait écrit
-    const [title, setTitle] = useState(props.value.titre)
-    const [description, setDescription] = useState(props.value.titre)
+    const [title, setTitle] = useState(props.values?.title)
+    const [description, setDescription] = useState(props.values?.description)
 
     //fonction pour choisir où va le curseur texte (quand il y a "ajouter" et "éditer" sur la même page)
     const inputRef = useRef(null)
@@ -39,63 +40,41 @@ function TodoForm(props) {
             id: Math.floor(Math.random() * 10000),
             title: title,
             description: description
-            // text: description
+
         });
 
         // remet à zéro l'input après validation
         setTitle('');
         setDescription('');
     };
+
     // ce qu'il s'affiche à l'écran (les input)
     return (
         <form className='todo-form' onSubmit={handleSubmit}>
-            {props.edit ? (
-                <>
-                    {/* champ de texte de modifier une todo */}
-                    <input
-                        type='text'
-                        placeholder='Update your item'
-                        value={title}
-                        name='text'
-                        className='todo-input edit'
-                        onChange={handleTitleChange}
-                        ref={inputRef}
-                    />
-                    <input
-                        type='text'
-                        placeholder='Update your item'
-                        value={description}
-                        name='text'
-                        className='todo-input edit'
-                        onChange={handleDescriptionChange}
-                        // ref={inputRef}
-                    />
-                    <button className='todo-button edit'>Modifier</button>
-                </>
-            ) : (
-                <>
-                    {/* champ de texte d'ajouter une todo */}
-                    <input
-                        type='text'
-                        placeholder="Titre de l'expérience"
-                        value={title}
-                        name='text'
-                        className='todo-input'
-                        onChange={handleTitleChange}
-                        ref={inputRef}
-                    />
-                    <input
-                        type='text'
-                        placeholder="Description de l'expérience"
-                        value={description}
-                        name='text'
-                        className='todo-input'
-                        onChange={handleDescriptionChange}
+            <>
+                {/* champ de texte de modifier une todo */}
+                <input
+                    type="text"
+                    placeholder="Titre"
+                    value={title}
+                    name="text"
+                    className='todo-input'
+                    onChange={handleTitleChange}
+                    ref={inputRef}
+                />
+                <input
+                    type="text"
+                    placeholder="Description"
+                    value={description}
+                    name="text"
+                    className="todo-input"
+                    onChange={handleDescriptionChange}
                     // ref={inputRef}
-                    />
-                    <button className='todo-button'>Ajouter</button>
-                </>
-            )}
+                />
+                <button className={clsx('todo-button', props.values && 'edit')}>
+                    {!props.values ? 'créer' : 'modifier'}
+                </button>
+            </>
         </form>
     );
 }
