@@ -56,7 +56,7 @@ function TodoForm(props) {
                     placeholder="Titre"
                     value={title}
                     name="text"
-                    className='todo-input'
+                    className={clsx('todo-input', props.values && 'edit')}
                     onChange={handleTitleChange}
                     ref={inputRef}
                 />
@@ -65,7 +65,7 @@ function TodoForm(props) {
                     placeholder="Description"
                     value={description}
                     name="text"
-                    className="todo-input"
+                    className={clsx('todo-input', props.values && 'edit')}
                     onChange={handleDescriptionChange}
                     // ref={inputRef}
                 />
