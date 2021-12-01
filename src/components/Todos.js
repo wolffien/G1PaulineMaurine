@@ -19,7 +19,7 @@ function Todos({ todos, completeTodo, removeTodo, updateTodo }) {
         return <TodoForm values={editingTodo} onSubmit={submitUpdate} />;
     }
 
-    // retourner la data stockée dans le tableau des todo
+    
     return todos.map((todo, index) => (
         <div
             // si la todo est cliquée, elle renvoie à du css qui coche la todo
@@ -33,15 +33,16 @@ function Todos({ todos, completeTodo, removeTodo, updateTodo }) {
                 {<br></br>}
                 {todo.description}
             </div>
-            {/* div qui retourne les icones */}
+
+            {/* Associe les icônes à leur action */}
             <div className='icons'>
                 <RiCloseCircleLine
-                    // quand on clique sur l'icone, cela renvoie à la fonction supprimer la todo
+                    // quand on clique sur l'icone croix, renvoie à la fonction delete et supprime la todo
                     onClick={() => removeTodo(todo.id)}
                     className='delete-icon'
                 />
                 <TiEdit
-                    // quand on clique, cela renvoie vers la fonction "éditer la todo"
+                    // quand on clique sur l'icone de modification, renvoie à la fonction update et modification
                     onClick={() => setEditingTodo(todo)}
                     className='edit-icon'
                 />

@@ -6,12 +6,12 @@ import clsx from 'clsx'
 
 // props = { value, onSubmit }
 function TodoForm(props) {
-    // if (value)
+    
     // quand on update ça ne perd pas ce que l'user avait écrit
     const [title, setTitle] = useState(props.values?.title)
     const [description, setDescription] = useState(props.values?.description)
 
-    //fonction pour choisir où va le curseur texte (quand il y a "ajouter" et "éditer" sur la même page)
+    
     const inputRef = useRef(null)
     // mettre automatiquement le curseur dans l'input de l'edit quand on clique sur edit
     useEffect(() => {
@@ -23,7 +23,6 @@ function TodoForm(props) {
         setTitle(e.target.value);
     };
     
-
     // faire un input description
     const handleDescriptionChange = e => {
         setDescription(e.target.value);
@@ -33,8 +32,7 @@ function TodoForm(props) {
         // enlever le rafraichissement auto de la page
         e.preventDefault();
 
-        // faire en sorte que le btn "ajouter" conserve la data
-        // ET/OU ajoute une nouvelle todo au tableau des todo
+        
         props.onSubmit({
             // mettre une id à chaque todo, qui est un nombre compris entre 1 et 10000
             id: Math.floor(Math.random() * 10000),
@@ -48,11 +46,11 @@ function TodoForm(props) {
         setDescription('');
     };
 
-    // ce qu'il s'affiche à l'écran (les input)
+    // paramètres des inputs
     return (
         <form className='todo-form' onSubmit={handleSubmit}>
             <>
-                {/* champ de texte de modifier une todo */}
+                
                 <input
                     type="text"
                     placeholder="Titre"
