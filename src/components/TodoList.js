@@ -18,9 +18,9 @@ function TodoList() {
 
     //Modification d'une todo déjà existante
     const updateTodo = (id, todo) => {
-        
+
         const updatedTodos = [...todos, todo];
-       
+
         setTodos(updatedTodos)
     };
 
@@ -51,7 +51,7 @@ function TodoList() {
             <Todos
                 todos={todos}
                 completeTodo={completeTodo}
-                removeTodo={removeTodo} 
+                removeTodo={removeTodo}
                 updateTodo={updateTodo}
             />
         </div>
