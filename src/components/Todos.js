@@ -22,7 +22,7 @@ function Todos({ todos, completeTodo, removeTodo, updateTodo }) {
     
     return todos.map((todo, index) => (
         <div
-            // si la todo est cliquée, elle renvoie à du css qui coche la todo
+            // si le texte de la todo est cliqué la todo est barrée
             className={todo.isComplete ? 'todo-row complete' : 'todo-row'}
             key={index}
         >

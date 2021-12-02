@@ -7,7 +7,6 @@ import clsx from 'clsx'
 // props = { value, onSubmit }
 function TodoForm(props) {
     
-    // quand on update ça ne perd pas ce que l'user avait écrit
     const [title, setTitle] = useState(props.values?.title)
     const [description, setDescription] = useState(props.values?.description)
 
