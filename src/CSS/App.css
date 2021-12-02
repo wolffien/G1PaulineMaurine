@@ -31,7 +31,7 @@
   
   .complete {
     text-decoration: line-through;
-    opacity: 0.4;
+    opacity: 0.8;
   }
   
   .todo-form {

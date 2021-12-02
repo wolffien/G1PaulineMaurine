@@ -18,9 +18,9 @@ function TodoList() {
 
     //Modification d'une todo déjà existante
     const updateTodo = (id, todo) => {
-
-        const updatedTodos = [...todos, todo];
-
+        
+        const updatedTodos = [...todos, todo].filter(todo => todo.id !== id);
+       
         setTodos(updatedTodos)
     };
 
