@@ -79,7 +79,7 @@ function TodoList() {
 
     return (
         <div
-            className={etatValide === "sombre" ? 'sombre' : 'clair'}
+            className={etatValide === "beige" ? 'beige' : 'clair'}
         >
 
             <p>
@@ -88,7 +88,7 @@ function TodoList() {
                     className='todo-input'
                     value={etatSaisi}
                     onChange={lorsDuChangement}
-                    placeholder='Écrire "clair" ou "sombre"'
+                    placeholder='Écrire "clair" ou "beige"'
                 ></input>
                 <button className='todo-button' onClick={valideEtatTheme}>Changer le fond</button>
             </p>
