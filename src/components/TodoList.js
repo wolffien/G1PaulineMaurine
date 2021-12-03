@@ -133,4 +133,7 @@ function TodoList() {
     );
 }
 
+
+// utiliser directement la coyleur saisie comme couleiur à appliquer
+// passer par un switcher
 export default TodoList;
