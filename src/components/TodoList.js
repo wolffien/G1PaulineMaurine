@@ -10,6 +10,9 @@ function TodoList() {
 
     //Ajoute une todo à la liste
     const [todos, setTodos] = useState([]); // todos est un tableau vide
+
+
+    //AJOUTER UN TODO
     const addTodo = (todo) => {
 
         const newTodos = [...todos, todo];
@@ -17,6 +20,7 @@ function TodoList() {
         setTodos(newTodos)
     };
 
+    //ENLEVER UN TODO
     const removeTodo = id => {
         const removeArr = [...todos].filter(todo => todo.id !== id);
 
@@ -52,19 +56,22 @@ function TodoList() {
             // };
 
 
-            // Barre la todo quand on clique sur son texte (signifie qu'elle a été réalisée)
-            const completeTodo = id => { //fonction completeTodo prend en paramètre id 
-                let updatedTodos = todos.map( //avec le map on parcour chaque cellule du tableau todos
-                    (todo) => { // et on fait appel à une fonction anonyme ( pas de nom) qui prend en paramèrtre todo (une cellule du tableau)
-                        if (todo.id === id) { // si l'id de la cellule = id passé en paramètre alors
-                            todo.isComplete = !todo.isComplete; // on intervertit l'état de la chose à faire
-                        }
-                        return todo; // retourne la chose à faire 
-                    }
-                )
+    // Barre la todo quand on clique sur son texte (signifie qu'elle a été réalisée)
+    //COCHER UN TODO
+    const completeTodo = id => { //fonction completeTodo prend en paramètre id 
+        let checkedTodos = todos.map( //avec le map on parcourt chaque cellule du tableau todos
+            (todo) => { // et on fait appel à une fonction anonyme ( pas de nom) qui prend en paramèrtre todo (une cellule du tableau)
+                if (todo.id === id) { // si l'id de la cellule = id passé en paramètre alors
+                    todo.isComplete = !todo.isComplete; // on intervertit l'état de la chose à faire
+                }
+                return todo; // retourne la chose à faire 
             }
+        )
+        setTodos(checkedTodos)
+
+    }
             
-    //Modification d'une todo déjà existante
+    //MODIFIER UN TODO
     const updateTodo = (id, todo) => {
 
         const updatedTodos = [...todos, todo].filter(todo => todo.id !== id);
