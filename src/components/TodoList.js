@@ -62,15 +62,14 @@ function TodoList() {
         // Barre la todo quand on clique sur son texte (signifie qu'elle a été réalisée)
         const completeTodo = id => { //fonction completeTodo prend en paramètre id 
             let updatedTodos = todos.map( //avec le map on parcour chaque cellule du tableau todos
-                todo => { // et on fait appel à une fonction anonyme ( pas de nom) qui prend en paramèrtre todo (une cellule du tableau)
+                (todo) => { // et on fait appel à une fonction anonyme ( pas de nom) qui prend en paramèrtre todo (une cellule du tableau)
                     if (todo.id === id) { // si l'id de la cellule = id passé en paramètre alors
                         todo.isComplete = !todo.isComplete; // on intervertit l'état de la chose à faire
                     }
                     return todo; // retourne la chose à faire 
                 }
-                return todo; // retourne la chose à faire 
-            }
-        )
+            )
+        }
 
         // ou en plus court JUSTE POUR LE PREMIER
         // let updatedTodos =  todos.slice()
