@@ -79,7 +79,7 @@ function TodoList() {
 
     return (
         <div
-            className={etatValide == "sombre" ? 'sombre' : 'clair'}
+            className={etatValide === "sombre" ? 'sombre' : 'clair'}
         >
 
             <p>
