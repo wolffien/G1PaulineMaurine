@@ -17,65 +17,63 @@ function TodoList() {
         setTodos(newTodos)
     };
 
+    const removeTodo = id => {
+        const removeArr = [...todos].filter(todo => todo.id !== id);
+
+        setTodos(removeArr);
+    };
+    //supression d'une todo avec JP
+
+            //todo[1]=null
+            // ou
+            // todos[1].id=''
+            // todos[1].title=''
+            // todos[1].description=''
+            // et on recopie
+            // todos[1]=todos[2]
+            // todos[2]=todos[3]
+            // 
+            // todos[n]=todos[n+1]
+
+            //     n=1
+            //     // todos[n]=todos[n+1]
+            //     n++
+            //     // todos[n]=todos[n+1]
+            //     n++
+            //     // todos[n]=todos[n+1]
+            //     n++
+
+
+            //     for(let n=nuLigneASUp; n<todos.length-1;n++){
+            //         todos[n]=todos[n+1]
+            //     }
+
+            //     setTodos(updatedTodos)
+            // };
+
+
+            // Barre la todo quand on clique sur son texte (signifie qu'elle a été réalisée)
+            const completeTodo = id => { //fonction completeTodo prend en paramètre id 
+                let updatedTodos = todos.map( //avec le map on parcour chaque cellule du tableau todos
+                    (todo) => { // et on fait appel à une fonction anonyme ( pas de nom) qui prend en paramèrtre todo (une cellule du tableau)
+                        if (todo.id === id) { // si l'id de la cellule = id passé en paramètre alors
+                            todo.isComplete = !todo.isComplete; // on intervertit l'état de la chose à faire
+                        }
+                        return todo; // retourne la chose à faire 
+                    }
+                )
+            }
+            
     //Modification d'une todo déjà existante
     const updateTodo = (id, todo) => {
 
         const updatedTodos = [...todos, todo].filter(todo => todo.id !== id);
 
-        // Suppression d'une todo
-        const removeTodo = id => {
-            const removeArr = [...todos].filter(todo => todo.id !== id);
-
-            setTodos(removeArr);
-        };
-
-        //supression d'une todo avec JP
-
-        //todo[1]=null
-        // ou
-        // todos[1].id=''
-        // todos[1].title=''
-        // todos[1].description=''
-        // et on recopie
-        // todos[1]=todos[2]
-        // todos[2]=todos[3]
-        // 
-        // todos[n]=todos[n+1]
-
-        //     n=1
-        //     // todos[n]=todos[n+1]
-        //     n++
-        //     // todos[n]=todos[n+1]
-        //     n++
-        //     // todos[n]=todos[n+1]
-        //     n++
-
-
-        //     for(let n=nuLigneASUp; n<todos.length-1;n++){
-        //         todos[n]=todos[n+1]
-        //     }
-
-        //     setTodos(updatedTodos)
-        // };
-
-
-        // Barre la todo quand on clique sur son texte (signifie qu'elle a été réalisée)
-        const completeTodo = id => { //fonction completeTodo prend en paramètre id 
-            let updatedTodos = todos.map( //avec le map on parcour chaque cellule du tableau todos
-                (todo) => { // et on fait appel à une fonction anonyme ( pas de nom) qui prend en paramèrtre todo (une cellule du tableau)
-                    if (todo.id === id) { // si l'id de la cellule = id passé en paramètre alors
-                        todo.isComplete = !todo.isComplete; // on intervertit l'état de la chose à faire
-                    }
-                    return todo; // retourne la chose à faire 
-                }
-            )
-        }
-
         // ou en plus court JUSTE POUR LE PREMIER
         // let updatedTodos =  todos.slice()
         // debugger
-        // updatedTodos[0].isComplete = !updatedTodos[0].isComplete 
-       
+        // updatedTodos[0].isComplete = !updatedTodos[0].isComplete
+ 
         setTodos(updatedTodos);
     };
 
@@ -103,10 +101,12 @@ function TodoList() {
 
     }
 
-
+    // utiliser directement la coyleur saisie comme couleiur à appliquer
+// passer par un switcher
     return (
         <div
-            className={etatValide === "beige" ? 'beige' : 'clair'}
+            //className={etatValide === "beige" ? 'beige' : 'clair'}
+            style={{ backgroundColor: etatValide }}
         >
 
             <p>
@@ -115,7 +115,7 @@ function TodoList() {
                     className='todo-input'
                     value={etatSaisi}
                     onChange={lorsDuChangement}
-                    placeholder='Écrire "clair" ou "beige"'
+                    placeholder='Écrire une couleur en anglais'
                 ></input>
                 <button className='todo-button' onClick={valideEtatTheme}>Changer le fond</button>
             </p>
@@ -133,6 +133,5 @@ function TodoList() {
 }
 
 
-// utiliser directement la coyleur saisie comme couleiur à appliquer
-// passer par un switcher
+
 export default TodoList;
